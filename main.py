@@ -36,13 +36,11 @@ def get_day():
 
 
 def main():
-    """Запускаем проверку по расписанию, каждый день в 03:00
-    schedule использует часовой пояс UTC, таким образом для работы по часовому поясу МСК
-    нужно отнимать 3 часа от запланированного времени"""
+    """Запускаем проверку по расписанию, каждый день в 03:00"""
 
     print('[+] Проверка по расписанию запущена')
-    schedule.every().day.at('00:00').do(get_day)
-    print(schedule.idle_seconds())
+    schedule.every().day.at('03:00').do(get_day)
+    # print(schedule.idle_seconds())
     while True:
         schedule.run_pending()
         time.sleep(1)  # прерываем выполнение -> защищаемся от высокой нагрузки на cpu
